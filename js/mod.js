@@ -1,8 +1,8 @@
 let modInfo = {
-	name: "The ??? Tree",
-	id: "mymod",
-	author: "nobody",
-	pointsName: "points",
+	name: "Wolf Tree",
+	id: "wolvesbeverycool",
+	author: "midnight-wolf-darkness",
+	pointsName: "baby wolves",
 	modFiles: ["layers.js", "tree.js"],
 
 	discordName: "",
@@ -38,11 +38,15 @@ function canGenPoints(){
 }
 
 // Calculate points/sec!
+// to multiply, gain = gain.mul(number)
 function getPointGen() {
 	if(!canGenPoints())
 		return new Decimal(0)
 
-	let gain = new Decimal(1)
+	let gain = new Decimal(2)
+	// gain mults here!!!
+	if (hasUpgrade('p', 11)) gain = gain.times(2)
+	if (hasUpgrade('p', 12)) gain = gain.times(upgradeEffect('p', 12))
 	return gain
 }
 
